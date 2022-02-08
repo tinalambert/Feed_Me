@@ -1,0 +1,13 @@
+.list-group-item {
+   border: solid black;
+   background-color: blanchedalmond;
+}
+
+#ingredientList {
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   grid-gap: 10px 15px;
+   margin: 0px 30px 0px 30px;
+   max-width: 1000px;
+   
+}

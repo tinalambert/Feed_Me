@@ -1,5 +1,5 @@
 const foodSearchDIV = document.getElementById("foodSearch");
-// console.log(foodSearch)
+console.log(foodSearch)
 const foodList = document.getElementById("foodlistOptions");
 console.log(foodList)
 let addedIngredientsDIV = document.getElementById("addedIngredients");
@@ -44,16 +44,29 @@ fetch("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=jpBJwOYeophbBI9AwtYh
 // ADD SELECTED ITEM TO MY LIST
 function addItem() {
    // Should add newItem to ingredientList with the correct CSS presentation
-   
    let selectedItem = foodSearchInput.value; // value of the searched ingredient
+   console.log(selectedItem)
    let newItem = document.createElement('li');
-   newItem.textContent = selectedItem;
+   let newInput = document.createElement('input');
+   let newLabel = document.createElement('label')
+   
+   newInput.className = "form-check-input me-1";
    newItem.className = "list-group-item"
-   ingredientList.appendChild(newItem);
-   foodSearchInput.value = "";
+   newInput.type = "checkbox";
+   newLabel.textContent = selectedItem;
+   
+   if (selectedItem.length === 0) {
+      alert("You must add a valid input");
+   } else {
+      newItem.appendChild(newInput);
+      newItem.appendChild(newLabel)
+      ingredientList.appendChild(newItem);
+      foodSearchInput.value = "";
+  }
+  
 
    // ONLY ADD THE ITEM IF IT'S PART OF THE DATA LIST
-   
+
    // if (selectedItem.value.tagName == "DATALIST") {
    //    ingredientList.appendChild(newItem);
    // } else {

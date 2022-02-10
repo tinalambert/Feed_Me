@@ -1,0 +1,19 @@
+{
+  "name": "feed_me",
+  "version": "1.0.0",
+  "description": "Food Recipe Creator",
+  "main": "fetchInfo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinalambert/Feed_Me.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinalambert/Feed_Me/issues"
+  },
+  "homepage": "https://github.com/tinalambert/Feed_Me#readme"
+}

@@ -33,6 +33,7 @@ header{
   padding-right: 20px;
   color: #ffffff;
 }
+
 header a{
   color: #ffffff;
   text-decoration: none;
@@ -125,7 +126,7 @@ float: left;
 /* Boxes */
 
 #boxes{
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 #boxes .box{

@@ -1,7 +1,7 @@
 import {dataArray} from "./top-1k-ingredients.js";
-import { fetchRecipes } from "./fetchRecipes.js";
-// console.log(dataArray);
-fetchRecipes();
+// import { fetchRecipes } from "./fetchRecipes.js";
+// // console.log(dataArray);
+// fetchRecipes();
 
 const foodSearchDIV = document.getElementById("foodSearch");
 console.log(foodSearchDIV)

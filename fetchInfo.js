@@ -1,8 +1,7 @@
 import {dataArray} from "./top-1k-ingredients.js";
-// import { fetchRecipes } from "./fetchRecipes.js";
-// // console.log(dataArray);
-// fetchRecipes();
 
+const rootDIV = document.getElementById("root")
+const generateBtn = document.getElementById("generate-btn")
 const foodSearchDIV = document.getElementById("foodSearch");
 console.log(foodSearchDIV)
 const foodList = document.getElementById("foodlistOptions");
@@ -10,12 +9,10 @@ console.log(foodList)
 let addedIngredientsDIV = document.getElementById("addedIngredients");
 console.log("This is the", addedIngredientsDIV);
 // set parameters for fetch API
-let parameters = addedIngredientsDIV.textContent.trim();
 const foodSearchInput = document.getElementById("foodDataList");
 console.log(foodSearchInput)
 let ingredientList = document.getElementById("ingredientList");
 console.log(ingredientList)
-// let finalIngredientList = document.getElementsByClassName("list-group-item")
 
 // Capture ingredients from top-1k-ingredients.js file
 dataArray.forEach(ingredient => {
@@ -24,31 +21,24 @@ dataArray.forEach(ingredient => {
    foodList.innerHTML += searchItem
 });
 
-// foodList.forEach(finalIngredient => {
-//    let parameters = `${finalIngredient}`
-//    console.log(parameters)
-// })
-// ADD SELECTED ITEM TO MY LIST
-// function addItem() {
+   let recipeDIV = document.createElement("div");
+   recipeDIV.className = "container";
    
-   // -- FETCH THE RECIPE API DATA -- 
-   // spoonacular?
    foodSearchDIV.addEventListener("click", (e) => {
       
       if (e.target.tagName == "BUTTON") {
-      console.log ("button was clicked")
-      // Should add newItem to ingredientList with the correct CSS presentation
-      let selectedItem = foodSearchInput.value; // value of the searched ingredient
-      // console.log(selectedItem)
-      let newItem = document.createElement('li');
-      let newInput = document.createElement('input');
-      let newLabel = document.createElement('label')
+         console.log ("button was clicked")
+         // Should add newItem to ingredientList with the correct CSS presentation
+         let selectedItem = foodSearchInput.value; // value of the searched ingredient
+         // console.log(selectedItem)
+         let newItem = document.createElement('li');
+         let newInput = document.createElement('input');
+         let newLabel = document.createElement('label');
       
       newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
       newInput.type = "checkbox";
       newLabel.textContent = selectedItem;
-      
       
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
@@ -59,39 +49,50 @@ dataArray.forEach(ingredient => {
          foodSearchInput.value = "";
       }
    }
-});
 
-const spoonacular = "https:api.spoonacular.com";
-// fetch("https://api.spoonacular.com/recipes/findByIngredients?apiKey=f37b1704fbf64d6b983628a89b0b8451", {
-   // const food = `${ingredient}`; // getting from element
+   // Creates Parameters from the list of added ingredients to pass into API
+
+   let items = ingredientList.getElementsByTagName("li");
+   console.log("These are the items", items)
+   let items2 = [];
    
-   fetch(`${spoonacular}/recipes/findByIngredients?apiKey=f37b1704fbf64d6b983628a89b0b8451&${parameters}`, {
-      
-      method: 'GET',
-      headers: {
-         // 'Access-Control-Allow-Origin': 'spoonacular.com',
-         'Content-Type': 'application/json',
-         // 'Allow': 'GET, POST, HEAD',
-      },
-      
+   for (let i = 0; i < items.length; i++) {
+         let parameter = items[i].innerText
+         items2.push(parameter)
+         // console.log("These are the parameters", items2);
+      }
+   let parameters = items2.join("%2C");
+   // console.log(parameters)
+
+
+   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=false&number=6`, {
+      "method": "GET",
+      "headers": {
+         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+         "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
+      }
    })
    .then(response => {
-      console.log('resolved', response)
+      console.log(response);
       return response.json()
    })
    .then(data => {
-      console.log(data, 111);
-      
+      console.log(data)
+      for (const recipe of data) {
+         // console.log(recipe.title)
+         let tempRecipeDIV = `<div class="img-container">
+         <p>Recipe: ${recipe.title}</p>
+         <img src="${recipe.image}">
+         </div>`
+         recipeDIV.innerHTML += tempRecipeDIV  
+      }
    })
-   .catch(error => {
-      console.log("rejected", error)
-   })
+   .catch(err => {
+      console.error(err);
+   });
+});
 
-   console.log(addedIngredientsDIV)
-   console.log(parameters)
+rootDIV.appendChild(recipeDIV)
 
-//console.log(ingredientList)
-
-// Grab the value of the addedIngredient, and pass that value into the URL parameter
-  
+console.log(addedIngredientsDIV)
 

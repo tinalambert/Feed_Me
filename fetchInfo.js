@@ -1,4 +1,6 @@
 import {dataArray} from "./top-1k-ingredients.js";
+import { fetchJoke } from "./fetchJoke.js";
+//fetchJoke();
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -91,6 +93,7 @@ generateBtn.addEventListener("click", (e) => {
    .catch(err => {
       console.error(err);
    });
+   fetchJoke()
 });
 rootDIV.appendChild(recipeDIV)
 console.log(addedIngredientsDIV)

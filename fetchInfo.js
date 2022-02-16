@@ -25,7 +25,6 @@ dataArray.forEach(ingredient => {
    recipeDIV.className = "container";
    
    foodSearchDIV.addEventListener("click", (e) => {
-      
       if (e.target.tagName == "BUTTON") {
          console.log ("button was clicked")
          // Should add newItem to ingredientList with the correct CSS presentation
@@ -35,10 +34,10 @@ dataArray.forEach(ingredient => {
          let newInput = document.createElement('input');
          let newLabel = document.createElement('label');
       
-      newInput.className = "form-check-input me-1";
-      newItem.className = "list-group-item"
-      newInput.type = "checkbox";
-      newLabel.textContent = selectedItem;
+         newInput.className = "form-check-input me-1";
+         newItem.className = "list-group-item"
+         newInput.type = "checkbox";
+         newLabel.textContent = selectedItem;
       
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
@@ -49,6 +48,9 @@ dataArray.forEach(ingredient => {
          foodSearchInput.value = "";
       }
    }
+});
+
+generateBtn.addEventListener("click", (e) => {
 
    // Creates Parameters from the list of added ingredients to pass into API
 
@@ -64,8 +66,7 @@ dataArray.forEach(ingredient => {
    let parameters = items2.join("%2C");
    // console.log(parameters)
 
-
-   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=false&number=6`, {
+   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=6`, {
       "method": "GET",
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -91,8 +92,6 @@ dataArray.forEach(ingredient => {
       console.error(err);
    });
 });
-
 rootDIV.appendChild(recipeDIV)
-
 console.log(addedIngredientsDIV)
 

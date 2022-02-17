@@ -38,7 +38,7 @@ foodSearchDIV.addEventListener("click", (e) => {
 
       newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
-      newInput.type = "checkbox";
+
       newLabel.textContent = selectedItem;
 
       let deleteButton = document.createElement("button");
@@ -47,7 +47,6 @@ foodSearchDIV.addEventListener("click", (e) => {
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
-         newItem.appendChild(newInput);
          newItem.appendChild(newLabel)
          newItem.appendChild(deleteButton);
          ingredientList.appendChild(newItem);

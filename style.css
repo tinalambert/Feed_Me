@@ -141,27 +141,41 @@ float: left;
 }
 
 .container{
-  max-width:1000px;
-  margin:100px auto;
+  width: 25%;
+  /* flex: 0 0 auto; */
   display:flex;
-  flex-wrap:wrap;
-  justify-content:space-around;
+  /* flex-wrap:wrap; */
+  /* justify-content:space-around; */
 }
 
 /* Recipe Card designs */
 
-.card{
-  position:relative;
-  margin:20px 0;
-  width:300px;
-  height:400px;
-  background: #fff;
-  transform-style:preserve-3d;
-  transform:perspective(2000px);
-  transition:1s;
-  box-shadow:inset 100px 0 50px rgba(0,0,0,0.5);
+.card-img-top {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
 }
 
+.card2{
+  position:relative;
+  border: solid lightgrey 1px;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+  width:18rem;
+  height:400px;
+  background: #fff; 
+}
+
+.col{
+  padding: auto;
+  margin:auto;
+}
+
+.row {
+  margin: 3rem;
+}
+
+/*
 .card:hover{
   z-index:1111;
   transform:perspective(2000px) rotate(-5de);
@@ -214,8 +228,7 @@ float: left;
   padding:0;
   line-height:25px;
   font-size:1.1em;
-}
-
+} */
 
 .footer {
   display: flex;

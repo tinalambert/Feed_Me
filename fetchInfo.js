@@ -23,26 +23,29 @@ dataArray.forEach(ingredient => {
    foodList.innerHTML += searchItem
 });
 
-   let recipeDIV = document.createElement("div");
-   recipeDIV.className = "container";
+let recipeDIV = document.createElement("div");
+recipeDIV.className = "container";
    
-   foodSearchDIV.addEventListener("click", (e) => {
-      if (e.target.tagName == "BUTTON") {
-         console.log ("button was clicked")
+foodSearchDIV.addEventListener("click", (e) => {
+   if (e.target.tagName == "BUTTON") {
+      console.log ("button was clicked")
          // Should add newItem to ingredientList with the correct CSS presentation
-         let selectedItem = foodSearchInput.value; // value of the searched ingredient
+      let selectedItem = foodSearchInput.value; // value of the searched ingredient
          // console.log(selectedItem)
-         let newItem = document.createElement('li');
-         let newInput = document.createElement('input');
-         let newLabel = document.createElement('label');
+      let newItem = document.createElement('li');
+      let newInput = document.createElement('input');
+      let newLabel = document.createElement('label');
       
-         newInput.className = "form-check-input me-1";
-         newItem.className = "list-group-item"
-         newInput.type = "checkbox";
-         newLabel.textContent = selectedItem;
+      newInput.className = "form-check-input me-1";
+      newItem.className = "list-group-item"
+      newInput.type = "checkbox";
+      newLabel.textContent = selectedItem;
+
+      let deleteButton = document.createElement("button");
+      deleteButton.innerHTML = "Delete";
       
       if (selectedItem.length === 0) {
-         alert("You must add a valid input");
+            alert("You must add a valid input");
       } else {
          newItem.appendChild(newInput);
          newItem.appendChild(newLabel)
@@ -94,6 +97,7 @@ generateBtn.addEventListener("click", (e) => {
       console.error(err);
    });
    fetchJoke()
+   recipeDIV.value = "";
 });
 rootDIV.appendChild(recipeDIV)
 console.log(addedIngredientsDIV)

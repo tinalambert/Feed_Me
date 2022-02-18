@@ -1,6 +1,10 @@
 import { dataArray } from "./top-1k-ingredients.js";
 import { fetchJoke } from "./fetchJoke.js";
-//fetchJoke();
+
+// import { fetchRecipeID } from "./fetchRecipeID.js";
+// console.log(fetchRecipeID)
+// // fetchJoke()
+// fetchRecipeID()
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -24,7 +28,7 @@ dataArray.forEach(ingredient => {
 });
 
 let recipeDIV = document.createElement("div");
-recipeDIV.className = "container";
+recipeDIV.className = "row row-cols-1 row-cols-md-4 g-8";
 
 foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
@@ -38,7 +42,7 @@ foodSearchDIV.addEventListener("click", (e) => {
 
       newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
-
+      newInput.type = "checkbox";
       newLabel.textContent = selectedItem;
 
       let deleteButton = document.createElement("button");
@@ -47,15 +51,11 @@ foodSearchDIV.addEventListener("click", (e) => {
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
+         newItem.appendChild(newInput);
          newItem.appendChild(newLabel)
-         newItem.appendChild(deleteButton);
+         // newItem.appendChild(deleteButton);
          ingredientList.appendChild(newItem);
          foodSearchInput.value = "";
-
-         deleteButton.addEventListener("click", (e) => {
-            console.log("This was li was clicked", e.target)
-            newItem.remove();
-         });
       }
    }
 });
@@ -63,6 +63,8 @@ foodSearchDIV.addEventListener("click", (e) => {
 generateBtn.addEventListener("click", (e) => {
 
    // Creates Parameters from the list of added ingredients to pass into API
+
+   // Add conditional check to clear the current set of results and populate new ones
 
    let items = ingredientList.getElementsByTagName("li");
    console.log("These are the items", items)
@@ -76,7 +78,7 @@ generateBtn.addEventListener("click", (e) => {
    let parameters = items2.join("%2C");
    // console.log(parameters)
 
-   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=6`, {
+   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=12`, {
       "method": "GET",
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -91,10 +93,18 @@ generateBtn.addEventListener("click", (e) => {
          console.log(data)
          for (const recipe of data) {
             // console.log(recipe.title)
-            let tempRecipeDIV = `<div class="img-container">
-         <p>Recipe: ${recipe.title}</p>
-         <img src="${recipe.image}">
-         </div>`
+            let tempRecipeDIV = `
+            <div class="col">
+            <div class="card2">
+            <img src="${recipe.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${recipe.title}</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+         </div>
+      </div>
+  `
+         
             recipeDIV.innerHTML += tempRecipeDIV
          }
       })

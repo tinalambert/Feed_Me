@@ -140,6 +140,14 @@ float: left;
   width: 90px;
 }
 
+
+/* .container{
+  max-width:1000px;
+  margin:100px auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+} */
 .container{
   width: 25%;
   /* flex: 0 0 auto; */
@@ -156,6 +164,45 @@ float: left;
 }
 
 .card2{
+  position:relative;
+  border: solid lightgrey 1px;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+  width:18rem;
+  height:400px;
+  background: #fff; 
+}
+
+.col{
+  padding: auto;
+  margin:auto;
+}
+
+.row {
+  margin: 3rem;
+
+.container{
+  width: 25%;
+  /* flex: 0 0 auto; */
+  display:flex;
+  /* flex-wrap:wrap; */
+  /* justify-content:space-around; */
+
+}
+
+/* Recipe Card designs */
+
+
+/* .card{
+
+.card-img-top {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+
+.card2{
+
   position:relative;
   border: solid lightgrey 1px;
   border-radius: 15px;
@@ -229,6 +276,7 @@ float: left;
   line-height:25px;
   font-size:1.1em;
 } */
+
 
 .footer {
   display: flex;

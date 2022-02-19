@@ -1,6 +1,14 @@
 import { dataArray } from "./top-1k-ingredients.js";
 import { fetchJoke } from "./fetchJoke.js";
+
 //import { fetchRecipeID } from "./fetchRecipeID.js";
+
+
+// import { fetchRecipeID } from "./fetchRecipeID.js";
+// console.log(fetchRecipeID)
+// // fetchJoke()
+// fetchRecipeID()
+
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -19,7 +27,10 @@ dataArray.forEach(ingredient => {
    foodList.innerHTML += searchItem
 });
 
+
 // ADD SEARCH INPUTS TO "MY LIST"
+
+
 foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
@@ -37,13 +48,25 @@ foodSearchDIV.addEventListener("click", (e) => {
       } else {
          newItem.appendChild(newInput);
          newItem.appendChild(newLabel)
+
+
+         // newItem.appendChild(deleteButton);
+
          ingredientList.appendChild(newItem);
          foodSearchInput.value = "";
       }
    }
 });
 generateBtn.addEventListener("click", (e) => {
+
    let finalIDArray = []
+
+
+   // Creates Parameters from the list of added ingredients to pass into API
+
+   // Add conditional check to clear the current set of results and populate new ones
+
+
    let items = ingredientList.getElementsByTagName("li");
    let items2 = [];
 
@@ -52,7 +75,12 @@ generateBtn.addEventListener("click", (e) => {
       items2.push(parameter)
    }
    let parameters = items2.join("%2C");
+
    
+
+   // console.log(parameters)
+
+
    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=12`, {
       "method": "GET",
       "headers": {
@@ -63,9 +91,29 @@ generateBtn.addEventListener("click", (e) => {
       .then(response => {
          return response.json()
       })
+
       .then(data => {        
          for (let recipeID of data) {
             finalIDArray.push(recipeID.id)
+
+      .then(data => {
+         console.log(data)
+         for (const recipe of data) {
+            // console.log(recipe.title)
+            let tempRecipeDIV = `
+            <div class="col">
+            <div class="card2">
+            <img src="${recipe.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${recipe.title}</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+         </div>
+      </div>
+  `
+         
+            recipeDIV.innerHTML += tempRecipeDIV
+
          }
          return data
       })    

@@ -1,6 +1,5 @@
 import { dataArray } from "./top-1k-ingredients.js";
 import { fetchJoke } from "./fetchJoke.js";
-//import { fetchRecipeID } from "./fetchRecipeID.js";
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -20,6 +19,7 @@ dataArray.forEach(ingredient => {
 });
 
 // ADD SEARCH INPUTS TO "MY LIST"
+
 foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
@@ -43,6 +43,7 @@ foodSearchDIV.addEventListener("click", (e) => {
    }
 });
 generateBtn.addEventListener("click", (e) => {
+
    let finalIDArray = []
    let items = ingredientList.getElementsByTagName("li");
    let items2 = [];
@@ -52,7 +53,7 @@ generateBtn.addEventListener("click", (e) => {
       items2.push(parameter)
    }
    let parameters = items2.join("%2C");
-   
+
    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=12`, {
       "method": "GET",
       "headers": {
@@ -63,6 +64,7 @@ generateBtn.addEventListener("click", (e) => {
       .then(response => {
          return response.json()
       })
+
       .then(data => {        
          for (let recipeID of data) {
             finalIDArray.push(recipeID.id)
@@ -96,9 +98,10 @@ generateBtn.addEventListener("click", (e) => {
                      recipeDIV.innerHTML += tempRecipeDIV;  
                   })
                })
-            })            
-            fetchJoke()
-         });           
+            
+            })          
+            fetchJoke()        
+ });           
 rootDIV.appendChild(recipeDIV)
 console.log(addedIngredientsDIV)
 

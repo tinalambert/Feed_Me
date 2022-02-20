@@ -1,6 +1,5 @@
-import { dataArray } from "./top-1k-ingredients.js"; 
+import { dataArray } from "./top-1k-ingredients.js";
 import { fetchJoke } from "./fetchJoke.js";
-
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -11,6 +10,7 @@ let addedIngredientsDIV = document.getElementById("addedIngredients");
 const foodSearchInput = document.getElementById("foodDataList");
 let ingredientList = document.getElementById("ingredientList");
 let recipeDIV = document.createElement("div");
+let countClick = 0;
 recipeDIV.className = "row row-cols-1 row-cols-md-4 g-8";
 
 // Capture ingredients from top-1k-ingredients.js file
@@ -25,39 +25,38 @@ foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
       let newItem = document.createElement('li');
-      // let newInput = document.createElement('input');
+      let newInput = document.createElement('input');
       let newLabel = document.createElement('label');
-      let deleteButton = document.createElement('button');
 
-      // newInput.className = "form-check-input me-1";
+      newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
-      // newInput.type = "checkbox";
-      deleteButton.className = "deleteButton"
+      newInput.type = "checkbox";
       newLabel.textContent = selectedItem;
 
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
-         // newItem.appendChild(newInput);
-         newItem.appendChild(newLabel);
-         newItem.appendChild(deleteButton);
+         newItem.appendChild(newInput);
+         newItem.appendChild(newLabel)
          ingredientList.appendChild(newItem);
          foodSearchInput.value = "";
       }
    }
 });
 
-// REMOVES INGREDIENT FROM LIST
+// RESETS THE PAGE TO CLEAR OLD ITEMS
 
-
-ingredientList.addEventListener("click", (e) => {
-   if (e.target.className == "deleteButton") {
-      console.log("I am clicked")
-      e.target.parentNode.remove();
-      
+foodSearchDIV.addEventListener("click", function () {
+   if (countClick >= 1) {
+      location.reload();
    }
 });
 
+// COUNTS CLICKS
+generateBtn.addEventListener("click", function () {
+   countClick += 1;
+   console.log(countClick);
+});
 
 generateBtn.addEventListener("click", (e) => {
 
@@ -76,34 +75,34 @@ generateBtn.addEventListener("click", (e) => {
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
          "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-         }
-      })
+      }
+   })
       .then(response => {
          return response.json()
       })
 
-      .then(data => {        
+      .then(data => {
          for (let recipeID of data) {
             finalIDArray.push(recipeID.id)
          }
          return data
-      })    
+      })
       .then(data => {
          finalIDArray.forEach(id => {
             fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, {
-                  "method": "GET",
-                  "headers": {
-                     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-                     "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-                     }
-                  })
-                  .then(response => {
-                     return response.json()
-                  })
-                  .then(data => {
-                     let tempRecipeDIV = `
+               "method": "GET",
+               "headers": {
+                  "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                  "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
+               }
+            })
+               .then(response => {
+                  return response.json()
+               })
+               .then(data => {
+                  let tempRecipeDIV = `
                      <div class="col">
-                     <div class="card m-2">
+                     <div class="card2">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">
                      <h5 class="card-title">${data.title}</h5>
@@ -112,13 +111,13 @@ generateBtn.addEventListener("click", (e) => {
                      </div>
                      </div>
                      `;
-                     recipeDIV.innerHTML += tempRecipeDIV;  
-                  })
+                  recipeDIV.innerHTML += tempRecipeDIV;
                })
-            
-            })          
-            fetchJoke()        
- });           
+         })
+
+      })
+   fetchJoke()
+});
 rootDIV.appendChild(recipeDIV)
 console.log(addedIngredientsDIV)
 

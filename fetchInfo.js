@@ -1,5 +1,6 @@
-import { dataArray } from "./top-1k-ingredients.js";
+import { dataArray } from "./top-1k-ingredients.js"; 
 import { fetchJoke } from "./fetchJoke.js";
+
 
 const rootDIV = document.getElementById("root")
 const generateBtn = document.getElementById("generate-btn")
@@ -24,24 +25,40 @@ foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
       let newItem = document.createElement('li');
-      let newInput = document.createElement('input');
+      // let newInput = document.createElement('input');
       let newLabel = document.createElement('label');
+      let deleteButton = document.createElement('button');
 
-      newInput.className = "form-check-input me-1";
+      // newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
-      newInput.type = "checkbox";
+      // newInput.type = "checkbox";
+      deleteButton.className = "deleteButton"
       newLabel.textContent = selectedItem;
 
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
-         newItem.appendChild(newInput);
-         newItem.appendChild(newLabel)
+         // newItem.appendChild(newInput);
+         newItem.appendChild(newLabel);
+         newItem.appendChild(deleteButton);
          ingredientList.appendChild(newItem);
          foodSearchInput.value = "";
       }
    }
 });
+
+// REMOVES INGREDIENT FROM LIST
+
+
+ingredientList.addEventListener("click", (e) => {
+   if (e.target.className == "deleteButton") {
+      console.log("I am clicked")
+      e.target.parentNode.remove();
+      
+   }
+});
+
+
 generateBtn.addEventListener("click", (e) => {
 
    let finalIDArray = []
@@ -86,7 +103,7 @@ generateBtn.addEventListener("click", (e) => {
                   .then(data => {
                      let tempRecipeDIV = `
                      <div class="col">
-                     <div class="card2">
+                     <div class="card m-2">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">
                      <h5 class="card-title">${data.title}</h5>

@@ -25,22 +25,37 @@ foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
       let newItem = document.createElement('li');
-      let newInput = document.createElement('input');
+      // let newInput = document.createElement('input');
       let newLabel = document.createElement('label');
+      let deleteButton = document.createElement('button');
 
-      newInput.className = "form-check-input me-1";
+      // newInput.className = "form-check-input me-1";
       newItem.className = "list-group-item"
-      newInput.type = "checkbox";
+      // newInput.type = "checkbox";
+      deleteButton.className = "deleteButton"
       newLabel.textContent = selectedItem;
 
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
-         newItem.appendChild(newInput);
-         newItem.appendChild(newLabel)
+         // newItem.appendChild(newInput);
+         newItem.appendChild(newLabel);
+         newItem.appendChild(deleteButton);
          ingredientList.appendChild(newItem);
          foodSearchInput.value = "";
       }
+   }
+});
+
+
+// REMOVES INGREDIENT FROM LIST
+
+
+ingredientList.addEventListener("click", (e) => {
+   if (e.target.className == "deleteButton") {
+      console.log("I am clicked")
+      e.target.parentNode.remove();
+
    }
 });
 

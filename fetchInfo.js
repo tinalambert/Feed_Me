@@ -30,7 +30,8 @@ foodSearchDIV.addEventListener("click", (e) => {
       let deleteButton = document.createElement('button');
 
       // newInput.className = "form-check-input me-1";
-      newItem.className = "list-group-item"
+      // newItem.className = "list-group-item"
+      newItem.className = "list-unstyled text-center text-capitalize fs-2"
       // newInput.type = "checkbox";
       deleteButton.className = "deleteButton"
       newLabel.textContent = selectedItem;
@@ -55,7 +56,6 @@ ingredientList.addEventListener("click", (e) => {
    if (e.target.className == "deleteButton") {
       console.log("I am clicked")
       e.target.parentNode.remove();
-
    }
 });
 
@@ -115,13 +115,15 @@ generateBtn.addEventListener("click", (e) => {
                   return response.json()
                })
                .then(data => {
+                  console.log(data)
                   let tempRecipeDIV = `
                      <div class="col">
-                     <div class="card2">
+                     <div class="card text-center">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">
                      <h5 class="card-title">${data.title}</h5>
-                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                     <p class="text-truncate" style="max-height: 50px">${data.summary}</p>
+                     <a href="${data.sourceUrl}" class="btn btn-dark">Get the recipe!</a>
                      </div>
                      </div>
                      </div>

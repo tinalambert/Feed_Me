@@ -34,6 +34,7 @@ foodSearchDIV.addEventListener("click", (e) => {
       newItem.className = "list-unstyled text-center text-capitalize fs-2"
       // newInput.type = "checkbox";
       deleteButton.className = "deleteButton"
+      deleteButton.textContent = "x"
       newLabel.textContent = selectedItem;
 
       if (selectedItem.length === 0) {

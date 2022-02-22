@@ -27,9 +27,11 @@ foodSearchDIV.addEventListener("click", (e) => {
       let newItem = document.createElement('li');
       let newLabel = document.createElement('label');
       let deleteButton = document.createElement('button');
+      deleteButton.className = "btn btn-light"
+      deleteButton.innerHTML = `<i class="bi bi-trash3"></i>`
+      document.body.append(deleteButton)
 
       newItem.className = "list-unstyled text-center text-capitalize fs-2"
-      deleteButton.className = "deleteButton"
       // deleteButton.textContent = "x"
       newLabel.textContent = selectedItem;
 
@@ -44,12 +46,10 @@ foodSearchDIV.addEventListener("click", (e) => {
    }
 });
 
-
 // REMOVES INGREDIENT FROM LIST
 
-
 ingredientList.addEventListener("click", (e) => {
-   if (e.target.className == "deleteButton") {
+   if (e.target.className == "bi bi-trash3") {
       console.log("I am clicked")
       e.target.parentNode.remove();
    }
@@ -86,12 +86,11 @@ generateBtn.addEventListener("click", (e) => {
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
          "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-      }
-   })
+         }
+      })
       .then(response => {
          return response.json()
       })
-
       .then(data => {
          for (let recipeID of data) {
             finalIDArray.push(recipeID.id)
@@ -105,8 +104,8 @@ generateBtn.addEventListener("click", (e) => {
                "headers": {
                   "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
                   "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-               }
-            })
+                  }
+               })
                .then(response => {
                   return response.json()
                })
@@ -125,9 +124,8 @@ generateBtn.addEventListener("click", (e) => {
                      </div>
                      `;
                   recipeDIV.innerHTML += tempRecipeDIV;
-               })
+             })
          })
-
       })
    fetchJoke()
 });

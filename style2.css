@@ -3,7 +3,7 @@
 .deleteButton {
    width: 30px;
    height: 30px;
-   background: darkred;
+   background-image: url("https://www.vhv.rs/dpng/d/562-5627622_trash-can-trash-can-icon-white-png-transparent.png");
    color: darkred;
    display: inline-flex;
    align-items: center;

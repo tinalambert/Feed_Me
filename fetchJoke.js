@@ -11,9 +11,10 @@ async function fetchJoke() {
       // console.log(`${data[value]}`)
    
       let tempJokeHTML = `
-      <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
+      <div class="accordion container-fluid px-4" id="accordionExample">
+      <div class="accordion-item row">
+      
+      <h2 class="accordion-header col-md-6 offset-md-3 mb-3" id="headingOne">
          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
             You've generated a random joke!
          </button>
@@ -22,6 +23,7 @@ async function fetchJoke() {
          <div class="accordion-body">
             <strong>JOKE:</strong> ${data[value]}
          </div>
+      
       </div>
       </div>
    </div>`

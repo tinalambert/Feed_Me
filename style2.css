@@ -19,26 +19,3 @@
    font-size: 3vw;
    
 }
-
-
-/* Delete button from dcode */
-.deleteButton {
-   width: 30px;
-   height: 30px;
-   background: darkred;
-   color: darkred;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   cursor: pointer;
-   border-radius: 50%;
-   border: none;
-   text-decoration: none;
-   transition: background 0.2s;
- }
- 
- .deleteButton:hover {
-   background-color: red;
-   color: white;
-   
- }

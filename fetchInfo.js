@@ -25,17 +25,21 @@ foodSearchDIV.addEventListener("click", (e) => {
    if (e.target.tagName == "BUTTON") {
       let selectedItem = foodSearchInput.value;
       let newItem = document.createElement('li');
+      // let newInput = document.createElement('input');
       let newLabel = document.createElement('label');
       let deleteButton = document.createElement('button');
 
+      // newInput.className = "form-check-input me-1";
+      // newItem.className = "list-group-item"
       newItem.className = "list-unstyled text-center text-capitalize fs-2"
+      // newInput.type = "checkbox";
       deleteButton.className = "deleteButton"
-      deleteButton.textContent = "x"
       newLabel.textContent = selectedItem;
 
       if (selectedItem.length === 0) {
          alert("You must add a valid input");
       } else {
+         // newItem.appendChild(newInput);
          newItem.appendChild(newLabel);
          newItem.appendChild(deleteButton);
          ingredientList.appendChild(newItem);

@@ -113,23 +113,23 @@ generateBtn.addEventListener("click", (e) => {
                .then(data => {
                   console.log(data)
                   let tempRecipeDIV = `
-                     <div class="col">
+                     <div class="col g-2">
                      <div class="card text-center">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">
                      <h5 class="card-title">${data.title}</h5>
                      <p class="text-truncate" style="max-height: 50px">${data.summary}</p>
-                     <a href="${data.sourceUrl}" class="btn btn-dark">Get the recipe!</a>
+                     <a href="${data.sourceUrl}" id="getRecipe" class="btn btn-secondary">Get the recipe!</a>
                      </div>
                      </div>
                      </div>
                      `;
                   recipeDIV.innerHTML += tempRecipeDIV;
-             })
+               })
          })
       })
    fetchJoke()
 });
 rootDIV.appendChild(recipeDIV)
-console.log(addedIngredientsDIV)
+console.log(recipeDIV)
 

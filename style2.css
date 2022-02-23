@@ -3,14 +3,18 @@
    border-radius: 1rem;
  }
 
+ .jumbotron h1 {
+   text-shadow: 1px 1px 2px #fff;
+ }
+
  #deleteButton {
    background-color: transparent;
    border: transparent;
  }
 
  #deleteButton:hover {
-   color: var(--bs-red);
-   transform: scale(1.2);
+   color: red;
+   transform: scale(1.5);
    background-color: transparent
  }
  #add-btn:hover {
@@ -26,4 +30,24 @@
     rgba(29, 236, 197, 0.5),
     rgba(91, 14, 214, 0.5) 100%
   );
+ }
+
+ #getRecipe:hover {
+    background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+ }
+
+ .accordion-button:hover {
+    background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+ }
+
+ .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
  }

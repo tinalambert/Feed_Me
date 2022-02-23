@@ -27,8 +27,9 @@ foodSearchDIV.addEventListener("click", (e) => {
       let newItem = document.createElement('li');
       let newLabel = document.createElement('label');
       let deleteButton = document.createElement('button');
+      deleteButton.id ="deleteButton"
       deleteButton.className = "btn btn-light"
-      deleteButton.innerHTML = `<i class="bi bi-trash3"></i>`
+      deleteButton.innerHTML = `<i class="bi bi-trash3-fill"></i>`
       document.body.append(deleteButton)
 
       newItem.className = "list-unstyled text-center text-capitalize fs-2"
@@ -49,9 +50,9 @@ foodSearchDIV.addEventListener("click", (e) => {
 // REMOVES INGREDIENT FROM LIST
 
 ingredientList.addEventListener("click", (e) => {
-   if (e.target.className == "bi bi-trash3") {
+   if (e.target.className == "bi bi-trash3-fill") {
       console.log("I am clicked")
-      e.target.parentNode.remove();
+      e.target.parentNode.parentNode.remove();
    }
 });
 

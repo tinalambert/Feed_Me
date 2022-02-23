@@ -1,22 +1,31 @@
 
-/* Delete button from dcode */
-.deleteButton {
-   width: 30px;
-   height: 30px;
-   background-image: url("https://www.vhv.rs/dpng/d/562-5627622_trash-can-trash-can-icon-white-png-transparent.png");
-   color: darkred;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   cursor: pointer;
-   border-radius: 50%;
-   border: none;
-   text-decoration: none;
-   transition: background 0.2s;
+ .jumbotron {
+   border-radius: 1rem;
  }
- 
- .deleteButton:hover {
-   background-color: red;
-   color: white;
-   
+
+ #deleteButton {
+   background-color: transparent;
+   border: transparent;
+   padding: 1rem;
+   margin: 1rem;
+ }
+
+ #deleteButton:hover {
+   color: var(--bs-red);
+   transform: scale(1.2);
+   background-color: transparent
+ }
+ #add-btn:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+ }
+ #generate-btn:hover {
+    background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
  }

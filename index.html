@@ -32,7 +32,7 @@
 
   <header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
           aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,20 +47,14 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
           </ul>
 
         </div>
       </div>
     </nav>
-
-
   </header>
 
-  <!-- <section id="showcase"> -->
-  <br>
+  <!-- Jumbotron -->
 
   <div class="jumbotron jumbotron-fluid"
     style="background-image: url('https://images.pexels.com/photos/1415734/pexels-photo-1415734.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2');">
@@ -70,7 +64,7 @@
       <p>Learn how to make quick and easy meals with the ingredients you already have.</p>
       <div id="foodSearch">
 
-        <input class="mb-3 col-lg-5 col-form-label" list="foodlistOptions" id="foodDataList" placeholder="Type to search...">
+        <input class="mb-3 col-lg-5 col-form-label" list="foodlistOptions" id="foodDataList" placeholder="Type to search..." style="border-radius: 1rem">
         <br>
         <button id="add-btn" type="submit" class=" mb-3 btn btn-secondary">Add to "My Fridge"<br></button>
         <br>
@@ -81,16 +75,15 @@
 
   </div>
   <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="container">
-        <img src="https://images.pexels.com/photos/6508357/pexels-photo-6508357.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid" alt="Inside refridgerator" style="height: 70vh">
+    <div class="col-md-6 mb-2">
+      <div class="container bg-image img fluid" style="background-image: url('https://images.pexels.com/photos/6508357/pexels-photo-6508357.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=250&w=700'); height: 75vh; border-radius: 1rem;">
+        <!-- <img src="https://images.pexels.com/photos/6508357/pexels-photo-6508357.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid" alt="Inside refridgerator" style="height: 70vh"> -->
       </div>
     </div>
-    <div class="col-md-6" id="addedIngredients">
+    <div class="col-md-6 mb-2" id="addedIngredients">
       <!-- <div id="addedIngredients"> -->
-      <div class=" container bg-image text-center img-fluid"
-        style="background-image: url('https://images.pexels.com/photos/10526896/pexels-photo-10526896.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); height: 70vh">
-        <h2 class="display-4 text-center">My Fridge Ingredients</h2>
+      <div class="container bg-image text-center img-fluid" style="background-image: url('https://images.pexels.com/photos/10526896/pexels-photo-10526896.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=500'); height: 75vh; border-radius: 1rem;">
+        <h2 class="d-inline display-5 text-center bg-light bg-opacity-75 m-3" style="border-radius: 1rem;">My Fridge Ingredients</h2>
         <ul id="ingredientList" class="list-unstyled" style="font-family: 'Coming Soon', cursive">
         </ul>
 
@@ -98,16 +91,16 @@
         <button id="generate-btn" type="submit" class="btn btn-secondary text-center">Let's cook!</button>
       </div>
     </div>
+  </div>
     <br>
-    <hr>
-    <span class="d-block p-2 bg-dark text-white text-center">Now, let's see what you can make!</span>
+    <div>
+    <span class="d-block p-2 bg-dark text-white text-center mb-4">Now, let's see what you can make!</span>
+  </div>
     <br>
-
+  <div>
     <datalist id="foodlistOptions">
       <!-- <option value="foodItem"> -->
-
     </datalist>
-
   </div>
   <!-- CREATE LIST OF ADDED INGREDIENTS -->
   <br>

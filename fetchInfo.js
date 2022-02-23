@@ -32,7 +32,7 @@ foodSearchDIV.addEventListener("click", (e) => {
       deleteButton.innerHTML = `<i class="bi bi-trash3-fill"></i>`
       document.body.append(deleteButton)
 
-      newItem.className = "list-unstyled text-center text-capitalize fs-2"
+      newItem.className = "list-unstyled text-center text-capitalize"
       // deleteButton.textContent = "x"
       newLabel.textContent = selectedItem;
 
@@ -82,7 +82,7 @@ generateBtn.addEventListener("click", (e) => {
    }
    let parameters = items2.join("%2C");
 
-   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=12`, {
+   fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${parameters}&ranking=2&ignorePantry=true&number=20`, {
       "method": "GET",
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",

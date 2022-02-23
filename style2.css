@@ -6,8 +6,6 @@
  #deleteButton {
    background-color: transparent;
    border: transparent;
-   padding: 1rem;
-   margin: 1rem;
  }
 
  #deleteButton:hover {

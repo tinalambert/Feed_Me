@@ -1,14 +1,9 @@
 async function fetchJoke() {
-
    const response = await fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random?rapidapi-key=379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230");
    const data = await response.json();
    const jokeDIV = document.getElementById("joke")
-   
-   console.log("From fetch Joke", data); // object
-   // const tempJoke = data.data;
  
    for (let value in data) {
-      // console.log(`${data[value]}`)
    
       let tempJokeHTML = `
       <div class="accordion container-fluid px-4" id="accordionExample">
@@ -29,5 +24,4 @@ async function fetchJoke() {
    jokeDIV.innerHTML += tempJokeHTML;
    }
 }
-
 export {fetchJoke};

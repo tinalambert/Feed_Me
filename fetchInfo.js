@@ -113,8 +113,8 @@ generateBtn.addEventListener("click", (e) => {
                .then(data => {
                   console.log(data)
                   let tempRecipeDIV = `
-                     <div class="col g-2">
-                     <div class="card text-center">
+                     <div class="col-6 g-2">
+                     <div class="card text-center h-100">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">
                      <h5 class="card-title">${data.title}</h5>

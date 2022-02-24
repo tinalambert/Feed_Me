@@ -12,7 +12,6 @@ let ingredientList = document.getElementById("ingredientList");
 let recipeDIV = document.createElement("div");
 let countClick = 0;
 recipeDIV.className = "row row-cols-1 row-cols-md-4 g-8";
-
 // Capture ingredients from top-1k-ingredients.js file
 dataArray.forEach(ingredient => {
    let searchItem = `<option value="${ingredient}">`;
@@ -46,30 +45,24 @@ foodSearchDIV.addEventListener("click", (e) => {
       }
    }
 });
-
 // REMOVES INGREDIENT FROM LIST
-
 ingredientList.addEventListener("click", (e) => {
    if (e.target.className == "bi bi-trash3-fill") {
       console.log("I am clicked")
       e.target.parentNode.parentNode.remove();
    }
 });
-
 // RESETS THE PAGE TO CLEAR OLD ITEMS
-
 foodSearchDIV.addEventListener("click", function () {
    if (countClick >= 1) {
       location.reload();
    }
 });
-
 // COUNTS CLICKS
 generateBtn.addEventListener("click", function () {
    countClick += 1;
    console.log(countClick);
 });
-
 generateBtn.addEventListener("click", (e) => {
 
    let finalIDArray = []
@@ -113,7 +106,7 @@ generateBtn.addEventListener("click", (e) => {
                .then(data => {
                   console.log(data)
                   let tempRecipeDIV = `
-                     <div class="col-6 g-2">
+                     <div class="col-6 g-2 recipe-card">
                      <div class="card text-center h-100">
                      <img src="${data.image}" class="card-img-top" alt="...">
                      <div class="card-body">

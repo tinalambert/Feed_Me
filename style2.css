@@ -7,6 +7,10 @@
    text-shadow: 1px 1px 2px #fff;
  }
 
+ #circle-image {
+   border-radius: 50rem;
+ }
+
  #deleteButton {
    background-color: transparent;
    border: transparent;
@@ -49,5 +53,5 @@
  }
 
  .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 16px 16px 16px 0 rgba(0,0,0,0.2);
  }

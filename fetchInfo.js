@@ -27,7 +27,7 @@ foodSearchDIV.addEventListener("click", (e) => {
       let newItem = document.createElement('li');
       let newLabel = document.createElement('label');
       let deleteButton = document.createElement('button');
-      deleteButton.id ="deleteButton"
+      deleteButton.id = "deleteButton"
       deleteButton.className = "btn btn-light"
       deleteButton.innerHTML = `<i class="bi bi-trash3-fill"></i>`
       document.body.append(deleteButton)
@@ -87,8 +87,8 @@ generateBtn.addEventListener("click", (e) => {
       "headers": {
          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
          "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-         }
-      })
+      }
+   })
       .then(response => {
          return response.json()
       })
@@ -105,8 +105,8 @@ generateBtn.addEventListener("click", (e) => {
                "headers": {
                   "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
                   "x-rapidapi-key": "379fb0a048mshc2b84dfb3126e66p19db79jsnb00c0294a230"
-                  }
-               })
+               }
+            })
                .then(response => {
                   return response.json()
                })
@@ -125,7 +125,7 @@ generateBtn.addEventListener("click", (e) => {
                      </div>
                      `;
                   recipeDIV.innerHTML += tempRecipeDIV;
-             })
+               })
          })
       })
    fetchJoke()

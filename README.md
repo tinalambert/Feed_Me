@@ -5,7 +5,7 @@ FeedMe is a web-based application that is used to assist users with dinner plans
 
 ## Usage
 
-To use this program, either click the link here: [insertLink]
+To use this program, either click the link here: https://deploy-preview-33--vigilant-johnson-92b557.netlify.app/
 
 - Add your ingredients using the search bar at the top, and add them to the list by the "Add to My Fridge" button.
 - Once all of your ingredients have been added, click the "Let's Cook!" button to generate the recipes! 
